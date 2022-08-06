@@ -9,6 +9,10 @@ describe("learn about locators", () => {
     // cy.get("input");
     // cy.get(".gLFyf");
     // cy.get('input[title="Search"]');
-    cy.get('[name="q"]');
+    cy.get('[name="q"]')
+      .should("be.visible")
+      .and("have.class", "gLFyf")
+      .and("have.value", "")
+      .and("have.attr", "maxlength", "2048");
   });
 });
