@@ -4,15 +4,23 @@
 // glone this :  https://github.com/hoangvvo/nextjs-mongodb-app
 
 describe("test feeds are available", () => {
+  let baseURL;
+
+  before(() => {
+    baseURL = "http://localhost:3000";
+  });
+
+  beforeEach(() => {
+    cy.intercept("get", `${baseURL}/api/posts?limit=10`, {
+      fixture: "posts.json",
+    });
+  });
+
   it("visit feed page", () => {
-    cy.visit("http://localhost:3000/feed");
+    cy.visit(`${baseURL}/feed`);
   });
 
   it("count the feed as 2", () => {
-    cy.intercept("get", "http://localhost:3000/api/posts?limit=10", {
-      fixture: "posts.json",
-    });
-
     cy.get(".PostList_root__Cj_24")
       .find(".Post_root__6WEkA")
       .should("be.visible")
@@ -20,18 +28,13 @@ describe("test feeds are available", () => {
   });
 
   it("sign in the user", () => {
-    cy.visit("http://localhost:3000/login");
+    cy.visit(`${baseURL}/login`);
     cy.get("input[type='email'").type("abc@gmail.com");
     cy.get("input[type='password'").type("password");
     cy.get("form").submit();
   });
 
   it("create new feed post", () => {
-    // assert that only 2 post are there
-    cy.intercept("get", "http://localhost:3000/api/posts?limit=10", {
-      fixture: "posts.json",
-    });
-
     cy.get(".PostList_root__Cj_24")
       .find(".Post_root__6WEkA")
       .should("be.visible")
