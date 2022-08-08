@@ -23,3 +23,25 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("posts", () => {
+  cy.get(".PostList_root__Cj_24")
+    .find(".Post_root__6WEkA")
+    .should("be.visible");
+});
+
+Cypress.Commands.add("createPost", (data) => {
+  cy.get(".Input_input__fo8G3")
+    .type(data)
+    .then(() => {
+      cy.get("form").submit();
+      cy.contains("You have posted successfully");
+    });
+});
+
+Cypress.Commands.add("login", () => {
+  cy.visit(`http://localhost:3000/login`);
+  cy.get("input[type='email'").type("abc@gmail.com");
+  cy.get("input[type='password'").type("password");
+  cy.get("form").submit();
+});
