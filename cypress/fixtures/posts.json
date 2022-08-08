@@ -1,0 +1,30 @@
+{
+  "posts": [
+    {
+      "_id": "62f109098a40248a91a0a129",
+      "content": "another post",
+      "creatorId": "62f105aa8a40248a91a0a126",
+      "createdAt": "2022-08-08T13:00:57.255Z",
+      "creator": {
+        "_id": "62f105aa8a40248a91a0a126",
+        "profilePicture": null,
+        "name": "abcd",
+        "username": "abcd",
+        "bio": ""
+      }
+    },
+    {
+      "_id": "62f105ba8a40248a91a0a128",
+      "content": "hello",
+      "creatorId": "62f105aa8a40248a91a0a126",
+      "createdAt": "2022-08-08T12:46:50.574Z",
+      "creator": {
+        "_id": "62f105aa8a40248a91a0a126",
+        "profilePicture": null,
+        "name": "abcd",
+        "username": "abcd",
+        "bio": ""
+      }
+    }
+  ]
+}
