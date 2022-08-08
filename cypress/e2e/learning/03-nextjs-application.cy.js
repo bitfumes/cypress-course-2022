@@ -7,7 +7,7 @@ describe("test feeds are available", () => {
   let baseURL;
 
   before(() => {
-    baseURL = "http://localhost:3000";
+    baseURL = Cypress.env("baseURL");
   });
 
   beforeEach(() => {

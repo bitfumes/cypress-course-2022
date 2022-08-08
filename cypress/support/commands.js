@@ -40,7 +40,7 @@ Cypress.Commands.add("createPost", (data) => {
 });
 
 Cypress.Commands.add("login", () => {
-  cy.visit(`http://localhost:3000/login`);
+  cy.visit(`${Cypress.env("baseURL")}/login`);
   cy.get("input[type='email'").type("abc@gmail.com");
   cy.get("input[type='password'").type("password");
   cy.get("form").submit();
